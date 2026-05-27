@@ -8,6 +8,7 @@ Fail `week-08/individual/week8_api_pipeline.py` on jäetud individuaalseks demo-
 
 - `data_fetcher.py` - Roll A: Supabase API päringud (`fetch_sales`, `fetch_customers`, `fetch_products`), pagination, retry ja fallback.
 - `transform.py` - Roll B: puhastamine, ühendamine, KPI-d, RFM, cohort retention ja kampaaniaplaan.
+- `role_B_summary.md` - Roll B kokkuvõte ja töö kirjeldus.
 - `visualize_export.py` - Roll C: Plotly graafikud, executive dashboard ja HTML visuaalide eksport.
 - `pipeline.py` - Roll D: orkestreerib kogu protsessi `extract -> transform -> validate -> export -> notify`.
 - `notifications.py` - valikulised webhooki ja emaili teavitused.
