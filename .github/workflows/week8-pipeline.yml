@@ -1,0 +1,81 @@
+name: Week 8 Pipeline
+
+on:
+  push:
+    paths:
+      - "week-08/team/**"
+  pull_request:
+    paths:
+      - "week-08/team/**"
+  schedule:
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+    inputs:
+      analysis_date:
+        description: "Analysis end date in YYYY-MM-DD format"
+        required: false
+        default: "2025-02-28"
+
+jobs:
+  run-week8-pipeline:
+    name: Run Week 8 API pipeline
+    runs-on: ubuntu-latest
+
+    env:
+      ANALYSIS_DATE: ${{ github.event.inputs.analysis_date || '2025-02-28' }}
+      SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+      SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+      SUPABASE_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+
+      - name: Install pipeline dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install pandas plotly python-dotenv supabase PyYAML
+
+      - name: Show data source mode
+        run: |
+          if [ -n "$SUPABASE_URL" ] && [ -n "$SUPABASE_ANON_KEY" ]; then
+            echo "Supabase secrets are configured. The pipeline will try the API first."
+          else
+            echo "Supabase secrets are missing. The pipeline will use its fallback data path."
+          fi
+
+      - name: Compile Week 8 Python files
+        run: |
+          python -m py_compile \
+            week-08/team/data_fetcher.py \
+            week-08/team/notifications.py \
+            week-08/team/transform.py \
+            week-08/team/visualize_export.py \
+            week-08/team/pipeline.py
+
+      - name: Run team pipeline
+        working-directory: week-08/team
+        run: |
+          mkdir -p output logs
+          python pipeline.py --date "$ANALYSIS_DATE"
+
+      - name: Show generated files
+        if: always()
+        run: |
+          echo "Generated Week 8 files:"
+          find "${{ github.workspace }}/week-08/team" -maxdepth 2 -type f | sort
+
+      - name: Upload pipeline outputs
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: week8-pipeline-output
+          path: |
+            ${{ github.workspace }}/week-08/team/output/
+            ${{ github.workspace }}/week-08/team/logs/
+          if-no-files-found: warn

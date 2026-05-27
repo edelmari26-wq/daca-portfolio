@@ -1,15 +1,13 @@
-# Week 3: SQL Joins
 
-Sel nädalal õpime tabeleid omavahel ühendama.
+# Nädal 3: SQL JOINs
 
-## Teemad
-- INNER JOIN
-- LEFT JOIN, RIGHT JOIN
-- Mitmeosaline ühendamine
+Sel nädalal hakkan õppima SQL JOIN-e ehk seda, kuidas ühendada eri tabelites olevad andmed üheks tervikvaateks.
 
-## Failid
-- `sql_joins.sql` — JOIN näited
+Harjutan `INNER JOIN`-i, millega saab leida ainult kattuvad andmed, ja `LEFT JOIN`-i, millega saab näha ka puuduvaid seoseid, näiteks kliente, kes on registreerunud, aga pole veel ostnud.
 
-## Ülesanded
-- Individuaal: `individual/README.md`
-- Tiim: `team/README.md`
+Lisaks õpin kasutama `LEFT JOIN + WHERE IS NULL` mustrit, tabeli aliaseid ja mitme tabeli ühendamist, et vastata äriküsimustele nagu:
+
+- kes on parimad kliendid;
+- mida kliendid ostavad;
+- millised tooted ei müü;
+- millised kategooriad on eri linnades populaarsemad.

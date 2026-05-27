@@ -369,7 +369,7 @@ def write_combined_dashboard(results: dict[str, Any], path: Path) -> None:
       {_html_table(
         results["campaign_plan"],
         max_rows=10,
-        headers={{
+        headers={
           "Segment": "Segment",
           "goal": "Eesmärk",
           "message": "Sõnum",
@@ -379,7 +379,7 @@ def write_combined_dashboard(results: dict[str, Any], path: Path) -> None:
           "customers": "Kliente",
           "total_revenue": "Kogukäive",
           "revenue_share_pct": "Käibe osakaal %",
-        }},
+        },
       )}
     </section>
     {"".join(sections)}

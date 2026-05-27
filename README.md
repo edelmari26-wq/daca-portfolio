@@ -1,39 +1,19 @@
-# DACA Portfoolio
+# DACA Portfoolio -- [Kätlin Tootmaa]
 
-Teretulemast! See on DACA (Data Analysis & Business Intelligence Certificate) kursuse täielik portfoolio.
+## Minust
+Soovin teha karjääripööret ning alustada andmeanalüütikuna.
 
-## Struktuur
+## Eesmärk
+Õppida andmeanalüüsi -- SQL, Python, visualiseerimine -- ja ehitada professionaalne portfoolio.
 
-Projektis on 9 nädalat andmeanalüüsi ja äriteaduse arvutamisega:
-
-- **Week 1**: SQL Basics - Sissejuhatus SQL-i
-- **Week 2**: Data Cleaning - Andmete puhastamine
-- **Week 3**: SQL Joins - Tabelite ühendamine
-- **Week 4**: SQL Aggregation - Andmete koondamine
-- **Week 5**: Power BI - Visualiseerimine
-- **Week 6**: Python & Pandas - Programmeerimine
-- **Week 7**: RFM Analysis - Klientide segmentimine
-- **Week 8**: Data Processing - Andmete töötlemine
-- **Week 9**: Project - Lõppprojekt
-
-## Kausta struktuur
-
-Iga nädal sisaldab:
-- `individual/` — iseseisvad ülesanded
-- `team/` — tiimiga tehtud töö
-- Kõigis on `README.md` ja `images/` kaust
-- SQL, Python, Power BI failid vastavalt nädalale
-
-## Alustamine
-
-Kloonige või laadige alla see repositoorium ja alustage Week 1-st.
-
-```bash
-git clone https://github.com/edelmari26-wq/DACA-portfolio.git
-cd DACA-portfolio
-```
-
-## Autoriõigus
-
-© 2026 DACA Portfoolio
-
+## Nädala kaupa
+| Nädal | Teema | Staatus |
+|-------|-------|---------|
+| 0 | Onboarding | Läbitud |
+| 1 | SQL Basics | Läbitud |
+| 2 | SQL Cleaning | Läbitud |
+| 3 | SQL JOINs | Läbitud |
+| 4 | SQL Aggregation | Läbitud |
+| 5-6 | Visualiseerimine | Läbitud |
+| 7-8 | Python | Käimas |
+| 9-10 | Portfoolio + Karjäär | Tulemas |

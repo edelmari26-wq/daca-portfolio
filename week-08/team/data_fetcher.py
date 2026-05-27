@@ -1,8 +1,8 @@
 """Roll A: API Query.
 
 See moodul loob Supabase ühenduse, pärib sales/customers/products tabelid
-DataFrame'idena ning kasutab pagination'i ja retry loogikat, et
-suurte tabelite laadimine oleks töökindlam.
+DataFrame'idena ning kasutab pagination'i ja retry loogikat, et suurte
+tabelite laadimine oleks töökindlam.
 """
 
 from __future__ import annotations
@@ -45,8 +45,7 @@ FALLBACK_PRODUCT_PATHS = [
 def load_environment() -> None:
     """Leia lähim .env fail ja lae API tunnused keskkonnamuutujatesse."""
     dotenv_path = next(
-        (path for path in [Path.cwd() / ".env", *[parent / ".env"
-for parent in Path.cwd().parents]] if path.exists()),
+        (path for path in [Path.cwd() / ".env", *[parent / ".env" for parent in Path.cwd().parents]] if path.exists()),
         None,
     )
     load_dotenv(dotenv_path=dotenv_path)
@@ -177,6 +176,7 @@ def read_first_existing_csv(paths: list[Path], label: str) -> pd.DataFrame:
             df = pd.read_csv(path)
             logger.info("CSV fallback '%s': %s rida failist %s", label, len(df), path)
             return df
+
     logger.warning("CSV fallback '%s' puudub. Otsitud failid: %s", label, ", ".join(str(path) for path in paths))
     return pd.DataFrame()
 

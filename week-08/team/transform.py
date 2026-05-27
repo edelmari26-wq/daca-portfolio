@@ -60,7 +60,6 @@ def merge_datasets(
         merged["city"] = pd.NA
     if "store_location" in merged.columns:
         merged["city"] = merged["city"].fillna(merged["store_location"])
-
     if "channel" in merged.columns:
         merged.loc[merged["city"].isna() & (merged["channel"].astype(str).str.lower() == "online"), "city"] = "Online"
     merged["city"] = merged["city"].fillna("Teadmata")
